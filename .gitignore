@@ -1,0 +1,7 @@
+.venv/
+audiotemp.wav
+__pycache__/
+*/__pycache__/
+audios/
+artifacts/
+*.zip
