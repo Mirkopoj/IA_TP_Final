@@ -19,7 +19,7 @@ En la imgen se muestra la arquitectura que whisper utiliza. Se reentrarán los p
 
 # El dataset
 
-El dataset original está repartido en 3 archivos .zip, es_ar_female.zip, es_ar_male.zip y es_weather_messages.zip.
+El dataset original está repartido en 3 partes, es_ar_female, es_ar_male y es_weather_messages.
 Estos contienen cada uno, una carpeta con multiples archivos .wav y un archivo .tsv.
 Cada .tsv contiene 2 columnas donde la primera indica el nombre del archivo .wav al que se corresponde y la segunda la transcripcion del audio.
 Todos los tsv fueron editados, como se expilcó anteriormente, para contener todos los numeros en formato numerico. La version editada tiene el sufijo '_numeros' añadido a su nombre.
@@ -45,11 +45,51 @@ En el archivo 'fine_tune.py' se inicializan los modulos comunes y se ejecutan 10
 
 Para verlos se puede usar el comando siguiente
 
-```shell
+~~~shell
 tensorboard  --logdir=tensor_logs/
-```
+~~~
 
 ## Ref Test
 
+Viendo la evolucion de la funcion Loss, tanto de entrenamiento como de evaluación, vemos como el modelo mejora a lo largo de los 10 epochs. Por lo que el utilizo  el ultimo checkpoint.
 
+![TrainLoss](TrainLoss.png)
+
+En el codigo 'ref_test.py' solo imprimo el 'char error rate' y muestro las transcripciones hechas por el modelo junto a las esperadas para una evaluación manual, a modo de 'sanity-check'.
+
+# Integración 
+
+En la carpeta 'estacionamiento' está el modulo para la adquicición de patentes del estacionamiento, en la inicializacion de la clase IA, en el archivo 'estacionamiento/ia/ia.py', se carga el ultimo checkpoint para la utilización en el sistema.
+
+# Ejecución 
+
+## Entorno
+
+Primero será necesario descomprimír el archivo 'muy_grande.zip', este archivo contiene la carpeta de audios del dataset y el ultimo checkpoint del modelo entrenado. Está por separado porque estos archivos binarios muy grandes realentizan mucho a git.
+
+### Crear el entorno virtual
+
+~~~shell
+python -m venv .venv
+~~~
+
+### Activar el entorno virtual
+
+~~~shell
+source .venv/bin/activate
+~~~
+
+### Instalar las dependencias
+
+~~~shell
+pip install -r requirements.txt
+~~~
+
+Y a su vez instalar la version de pytorch que corresponda de [PyTorch](https://pytorch.org/)
+
+## Para el modulo de estacionamiento
+
+~~~shell
+python -m estacionamiento
+~~~
 
