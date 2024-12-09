@@ -65,7 +65,10 @@ En la carpeta 'estacionamiento' está el modulo para la adquicición de patentes
 
 ## Entorno
 
-Primero será necesario descomprimír el archivo 'muy_grande.zip', este archivo contiene la carpeta de audios del dataset y el ultimo checkpoint del modelo entrenado. Está por separado porque estos archivos binarios muy grandes realentizan mucho a git.
+Primero será necesario descomprimír el archivo 'DataSetAudio.zip', este archivo contiene la carpeta de audios del dataset y el archivo 'artifact.zip' el ultimo checkpoint del modelo entrenado. Están por separado porque estos archivos binarios muy grandes realentizan mucho a git.
+
+Ambos deberían ser descomprimidos en el mismo directorio que este README. Si se quiere ejecutar el entreno solo será necesario el dataset.
+Si se quiere ejecutar la integración solo se requiere el artifact. Ejecutando el entreno se construye un nuevo artifact.
 
 ### Crear el entorno virtual:
 
